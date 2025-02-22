@@ -50,10 +50,10 @@ if "current_question" not in st.session_state or st.session_state.stage != stage
         st.session_state.current_question = random.choice(questions[stage])
         st.session_state.answered = False  # 回答フラグをリセット
     
-    question = st.session_state.current_question
-    st.subheader(question["question"])
+question = st.session_state.current_question
+st.subheader(question["question"])
     
-    answer = st.radio("選択肢", question["options"], key="answer_radio")
+answer = st.radio("選択肢", question["options"], key="answer_radio")
     
     # 回答ボタン
 if st.button("回答する"):
