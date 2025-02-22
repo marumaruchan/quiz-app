@@ -45,7 +45,7 @@ questions = {
 }
 
  # セッションに現在の問題を保存する
-    if "current_question" not in st.session_state or st.session_state.stage != stage:
+if "current_question" not in st.session_state or st.session_state.stage != stage:
         st.session_state.stage = stage  # ステージを変更した場合、新しい問題を取得
         st.session_state.current_question = random.choice(questions[stage])
         st.session_state.answered = False  # 回答フラグをリセット
@@ -56,7 +56,7 @@ questions = {
     answer = st.radio("選択肢", question["options"], key="answer_radio")
     
     # 回答ボタン
-    if st.button("回答する"):
+if st.button("回答する"):
         if answer == question["answer"]:
             st.success("正解！")
         else:
@@ -65,7 +65,7 @@ questions = {
         st.session_state.answered = True  # 回答済みにする
     
     # 「次の問題」ボタン（回答後のみ表示）
-    if st.session_state.answered and st.button("次の問題"):
+if st.session_state.answered and st.button("次の問題"):
         st.session_state.current_question = random.choice(questions[stage])  # 新しい問題をセット
         st.session_state.answered = False  # 回答フラグをリセット
         st.experimental_rerun()  # ページをリロード
