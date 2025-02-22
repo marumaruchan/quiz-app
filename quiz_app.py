@@ -56,19 +56,33 @@ st.subheader(question["question"])
 answer = st.radio("選択肢", question["options"], key="answer_radio")
     
     # 回答ボタン
-if st.button("回答する"):
-        if answer == question["answer"]:
-            st.success("正解！")
-        else:
-            st.error(f"不正解。正解は {question['answer']} です。")
-        st.info(question["explanation"])
-        st.session_state.answered = True  # 回答済みにする
-    
-    # 「次の問題」ボタン（回答後のみ表示）
-if st.session_state.answered and st.button("次の問題"):
-        st.session_state.current_question = random.choice(questions[stage])  # 新しい問題をセット
-        st.session_state.answered = False  # 回答フラグをリセット
-        st.experimental_rerun()  # ページをリロード
+if "stage" not in st.session_state:
+    st.session_state.stage = stage
+    st.session_state.current_question = random.choice(questions[stage])
+    st.session_state.answered = False
 
+if st.session_state.stage != stage:
+    st.session_state.stage = stage
+    st.session_state.current_question = random.choice(questions[stage])
+    st.session_state.answered = False
+
+question = st.session_state.current_question
+st.subheader(question["question"])
+
+answer = st.radio("選択肢", question["options"], key="answer_radio")
+
+if st.button("回答する"):
+    if answer == question["answer"]:
+        st.success("正解！")
+    else:
+        st.error(f"不正解。正解は {question['answer']} です。")
+    st.info(question["explanation"])
+    st.session_state.answered = True
+
+if st.session_state.answered:
+    if st.button("次の問題"):
+        st.session_state.current_question = random.choice(questions[stage])
+        st.session_state.answered = False
+        st.rerun()
 if __name__ == "__main__":
     main()
