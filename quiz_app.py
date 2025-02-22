@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 def main():
- st.title("データサイエンス学習クイズ")
+    st.title("データサイエンス学習クイズ")
 
 stage = st.sidebar.selectbox("ステージを選択", [
     "ステージ1: Python基礎", 
