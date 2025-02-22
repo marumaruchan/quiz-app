@@ -1,3 +1,8 @@
+import streamlit as st
+import random
+
+def main():
+    st.title("データサイエンス学習クイズ")
 stage = st.sidebar.selectbox("ステージを選択", [
     "ステージ1: Python基礎", 
     "ステージ2: データ操作", 
@@ -54,3 +59,5 @@ if st.session_state["answered"] and st.button("次の問題"):
     st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
     st.session_state["answered"] = False
     st.experimental_rerun()
+if name == "main":
+    main()
