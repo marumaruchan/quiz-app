@@ -44,45 +44,26 @@ questions = {
     ]
 }
 
- # セッションに現在の問題を保存する
-if "current_question" not in st.session_state or st.session_state.stage != stage:
-        st.session_state.stage = stage  # ステージを変更した場合、新しい問題を取得
-        st.session_state.current_question = random.choice(questions[stage])
-        st.session_state.answered = False  # 回答フラグをリセット
-    
-question = st.session_state.current_question
-st.subheader(question["question"])
-    
-answer = st.radio("選択肢", question["options"], key="answer_radio")
-    
-    # 回答ボタン
-if "stage" not in st.session_state:
-    st.session_state.stage = stage
-    st.session_state.current_question = random.choice(questions[stage])
-    st.session_state.answered = False
+if "current_question" not in st.session_state:
+    st.session_state["current_question"] = 0
 
-if st.session_state.stage != stage:
-    st.session_state.stage = stage
-    st.session_state.current_question = random.choice(questions[stage])
-    st.session_state.answered = False
+if "answered" not in st.session_state:
+    st.session_state["answered"] = False
 
-question = st.session_state.current_question
-st.subheader(question["question"])
-
-answer = st.radio("選択肢", question["options"], key="answer_radio")
+question = questions[stage][st.session_state["current_question"]]
+answer = st.radio("選択肢", question["options"], key=f"answer_radio_{stage}")
 
 if st.button("回答する"):
+    st.session_state["answered"] = True
     if answer == question["answer"]:
-        st.success("正解！")
+        st.success("正解！ 🎉")
     else:
-        st.error(f"不正解。正解は {question['answer']} です。")
-    st.info(question["explanation"])
-    st.session_state.answered = True
+        st.error("不正解 😢")
+    st.write("解説: ", question["explanation"])
 
-if st.session_state.answered:
-    if st.button("次の問題"):
-        st.session_state.current_question = random.choice(questions[stage])
-        st.session_state.answered = False
-        st.rerun()
+if st.session_state["answered"] and st.button("次の問題"):
+    st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
+    st.session_state["answered"] = False
+    st.experimental_rerun()
 if __name__ == "__main__":
     main()
