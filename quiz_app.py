@@ -37,7 +37,6 @@ questions = {
         {"question": "仮説検定で使用されるp値の意味は？", "options": ["統計的有意性", "標本数", "平均値"], "answer": "統計的有意性", "explanation": "p値は仮説検定において統計的に有意かどうかを判断する指標です。"}
     ]
 }
-
 if "current_question" not in st.session_state:
     st.session_state["current_question"] = 0
 
@@ -45,6 +44,8 @@ if "answered" not in st.session_state:
     st.session_state["answered"] = False
 
 question = questions[stage][st.session_state["current_question"]]
+
+st.write(f"### {question['question']}")
 answer = st.radio("選択肢", question["options"], key=f"answer_radio_{stage}")
 
 if st.button("回答する"):
