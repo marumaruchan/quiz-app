@@ -43,9 +43,6 @@ questions = {
         {"question": "単回帰分析で目的変数と説明変数の関係を表す式は？", "options": ["y = ax + b", "y = ax^2 + bx + c", "y = a/b"], "answer": "y = ax + b", "explanation": "単回帰分析では `y = ax + b` の形の線形関係を求めます。"}
     ]
 }
-if stage not in questions:
-    st.warning("このステージの問題はまだ追加されていません。")
-    return
 
 if "current_question" not in st.session_state:
     st.session_state["current_question"] = 0
