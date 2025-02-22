@@ -1,9 +1,3 @@
-import streamlit as st
-import random
-
-def main():
-    st.title("データサイエンス学習クイズ")
-
 stage = st.sidebar.selectbox("ステージを選択", [
     "ステージ1: Python基礎", 
     "ステージ2: データ操作", 
@@ -23,26 +17,25 @@ questions = {
         {"question": "特定の列を削除するPandasのメソッドは？", "options": ["drop()", "remove()", "delete()"], "answer": "drop()", "explanation": "`drop()` メソッドを使うと、指定した列や行を削除できます。"}
     ],
     "ステージ3: 可視化": [
-        {"question": "Matplotlibでヒストグラムを作成する関数は？", "options": ["hist()", "scatter()", "boxplot()"], "answer": "hist()", "explanation": "Matplotlibの `hist()` を使うとデータの分布を確認できます。"},
-        {"question": "Seabornで散布図を描画する関数は？", "options": ["scatterplot()", "lineplot()", "barplot()"], "answer": "scatterplot()", "explanation": "Seabornの `scatterplot()` は散布図を作成するために使用されます。"}
+        {"question": "Matplotlibでヒストグラムを描く関数は？", "options": ["hist()", "plot()", "bar()"], "answer": "hist()", "explanation": "ヒストグラムを描くには `hist()` を使用します。"}
     ],
     "ステージ4: 統計分析": [
-        {"question": "データの平均を求めるメソッドは？", "options": ["mean()", "median()", "std()"], "answer": "mean()", "explanation": "`mean()` はデータの平均値を求める関数です。"},
-        {"question": "相関係数を求めるPandasのメソッドは？", "options": ["corr()", "cov()", "describe()"], "answer": "corr()", "explanation": "`corr()` は変数間の相関係数を計算します。"}
+        {"question": "データの平均を求める関数は？", "options": ["mean()", "median()", "mode()"], "answer": "mean()", "explanation": "`mean()` は平均値を計算する関数です。"}
     ],
     "ステージ5: 機械学習基礎": [
-        {"question": "線形回帰を行うためのScikit-learnのクラスは？", "options": ["LinearRegression", "LogisticRegression", "DecisionTree"], "answer": "LinearRegression", "explanation": "`LinearRegression` は線形回帰モデルを作成するためのクラスです。"},
-        {"question": "ロジスティック回帰に使用する関数は？", "options": ["LogisticRegression", "SVM", "KMeans"], "answer": "LogisticRegression", "explanation": "`LogisticRegression` は分類問題に適した回帰モデルです。"}
+        {"question": "線形回帰を実装するライブラリは？", "options": ["sklearn", "tensorflow", "numpy"], "answer": "sklearn", "explanation": "`sklearn` を使うと線形回帰モデルを簡単に実装できます。"}
     ],
     "ステージ6: 応用問題チャレンジ！": [
-        {"question": "時系列データのトレンド分析に適した手法は？", "options": ["移動平均", "クラスター分析", "PCA"], "answer": "移動平均", "explanation": "移動平均を使うと時系列データのトレンドを滑らかに表示できます。"},
-        {"question": "データの異常検知に使われる手法は？", "options": ["Isolation Forest", "線形回帰", "k近傍法"], "answer": "Isolation Forest", "explanation": "`Isolation Forest` は異常検知のためのアルゴリズムです。"}
+        {"question": "実データ分析で最もよく使われる手法は？", "options": ["回帰分析", "主成分分析", "クラスタリング"], "answer": "回帰分析", "explanation": "回帰分析は実データの関係性を分析するのに最適です。"}
     ],
     "ステージ7: 統計解析": [
-        {"question": "p値の意味は？", "options": ["有意性の指標", "データの平均", "標準偏差"], "answer": "有意性の指標", "explanation": "p値は仮説検定で結果の有意性を示す指標です。"},
-        {"question": "単回帰分析で目的変数と説明変数の関係を表す式は？", "options": ["y = ax + b", "y = ax^2 + bx + c", "y = a/b"], "answer": "y = ax + b", "explanation": "単回帰分析では `y = ax + b` の形の線形関係を求めます。"}
+        {"question": "仮説検定で使用されるp値の意味は？", "options": ["統計的有意性", "標本数", "平均値"], "answer": "統計的有意性", "explanation": "p値は仮説検定において統計的に有意かどうかを判断する指標です。"}
     ]
 }
+
+if stage not in questions:
+    st.warning("このステージの問題はまだ追加されていません。")
+    return
 
 if "current_question" not in st.session_state:
     st.session_state["current_question"] = 0
@@ -65,5 +58,3 @@ if st.session_state["answered"] and st.button("次の問題"):
     st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
     st.session_state["answered"] = False
     st.experimental_rerun()
-if __name__ == "__main__":
-    main()
