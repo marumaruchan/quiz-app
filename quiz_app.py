@@ -57,7 +57,3 @@ if st.button("回答する"):
     else:
         st.error(f"不正解。正解は {question['answer']} です。")
         st.info(question["explanation"])
-
-if name == "main":
-main()
-
