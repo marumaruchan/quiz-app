@@ -100,7 +100,7 @@ def main():
             {"question": "10.確率変数とは何か？", "options": ["数値が変化する変数", "確率を持つ変数", "特定の値を持つ変数"], "answer": "確率を持つ変数", "explanation": "確率変数は確率を持つ変数です。"}
         ]
     }
-}
+
 
 def generate_quiz(data):
     stages = data['stages']
