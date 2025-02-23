@@ -1,10 +1,10 @@
 import streamlit as st
 import random
 
-def main():
-    st.title("データサイエンス学習クイズ")
 
-    stage = st.sidebar.selectbox("ステージを選択", [
+st.title("データサイエンス学習クイズ")
+
+stage = st.sidebar.selectbox("ステージを選択", [
         "ステージ1: Python基礎", 
         "ステージ2: データ操作", 
         "ステージ3: 可視化", 
@@ -12,7 +12,7 @@ def main():
         "ステージ5: 機械学習基礎", 
         "ステージ6: 応用問題チャレンジ！"])
     
-    questions = {
+questions = {
     "ステージ1: Python基礎": [
         {"question": "1.Pythonで変数を定義する正しい方法は？", "options": ["var x = 5", "x = 5", "let x = 5"], "answer": "x = 5", "explanation": "Pythonでは変数を宣言する際に型指定は不要です。"},
         {"question": "2.リストの要素にアクセスする正しい方法は？", "options": ["list[1]", "list.get(1)", "list{1}"], "answer": "list[1]", "explanation": "Pythonではインデックスを角括弧[]で指定します。"},
@@ -161,6 +161,3 @@ if st.session_state["answered"]:
             st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
             st.session_state["answered"] = False
             st.rerun()  # 画面を更新
-
-if __name__ == "__main__":
-    main()
