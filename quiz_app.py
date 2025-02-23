@@ -44,23 +44,23 @@ def main():
         "ステージ7: 統計解析": [
             {"question": "仮説検定でp値が小さい場合の解釈は？", "options": ["帰無仮説を棄却", "帰無仮説を採択", "結果は不明"], "answer": "帰無仮説を棄却", "explanation": "p値が小さい場合、統計的に有意であると判断し、帰無仮説を棄却します。"}
         ]
-    }
+}
     
-    if stage not in questions:
+if stage not in questions:
         st.warning("このステージの問題はまだ追加されていません。")
         return
     
-    if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
+if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
         st.session_state["current_question"] = 0
         st.session_state["answered"] = False
         st.session_state["current_stage"] = stage
 
-    question = questions[stage][st.session_state["current_question"]]
+question = questions[stage][st.session_state["current_question"]]
     
-    st.write(f"### {question['question']}")
-    answer = st.radio("選択肢", question["options"], key="answer_radio")
+st.write(f"### {question['question']}")
+answer = st.radio("選択肢", question["options"], key="answer_radio")
     
-    if st.button("回答する"):
+if st.button("回答する"):
         st.session_state["answered"] = True
         if answer == question["answer"]:
             st.success("正解！ 🎉")
@@ -68,7 +68,7 @@ def main():
             st.error("不正解 😢")
         st.write("解説: ", question["explanation"])
     
-    if st.session_state["answered"]:
+if st.session_state["answered"]:
         if st.button("次の問題", key="next_question"):
             st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
             st.session_state["answered"] = False
