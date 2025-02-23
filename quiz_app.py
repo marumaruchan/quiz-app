@@ -138,7 +138,7 @@ def main():
     }
   ]
 }
-
+}
     
 
     if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
