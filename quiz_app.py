@@ -13,7 +13,7 @@ def main():
         "ステージ6: 応用問題チャレンジ！", 
         "ステージ7: 統計解析"])
     
-    questions = {
+questions = {
     "ステージ1: Python基礎": [
         {"question": "Pythonで変数を定義する正しい方法は？", "options": ["var x = 5", "x = 5", "let x = 5"], "answer": "x = 5", "explanation": "Pythonでは変数を宣言する際に型指定は不要です。"},
         {"question": "リストの要素にアクセスする正しい方法は？", "options": ["list[1]", "list.get(1)", "list{1}"], "answer": "list[1]", "explanation": "Pythonではインデックスを角括弧[]で指定します。"},
@@ -25,6 +25,7 @@ def main():
         {"question": "関数のデフォルト引数を設定する方法は？", "options": ["def func(x=10):", "def func(x: 10):", "func x = 10"], "answer": "def func(x=10):", "explanation": "Pythonではデフォルト引数を=で設定できます。"},
         {"question": "Pythonでコメントを記述する方法は？", "options": ["// コメント", "# コメント", "<!-- コメント -->"], "answer": "# コメント", "explanation": "Pythonでは#を使ってコメントを記述します。"},
         {"question": "タプルとリストの違いは？", "options": ["タプルは変更不可、リストは変更可", "どちらも変更可", "どちらも変更不可"], "answer": "タプルは変更不可、リストは変更可", "explanation": "タプルは変更不可（immutable）ですが、リストは変更可能です。"}
+    ],
         "ステージ2: データ操作": [
             {"question": "Pandasでデータの先頭を表示するメソッドは？", "options": ["head()", "tail()", "show()"], "answer": "head()", "explanation": "Pandasの `head()` メソッドはデータフレームの最初の数行を表示します。"},
             {"question": "特定の列を削除するPandasのメソッドは？", "options": ["drop()", "remove()", "delete()"], "answer": "drop()", "explanation": "`drop()` メソッドを使うと、指定した列や行を削除できます。"}
@@ -44,7 +45,7 @@ def main():
         "ステージ7: 統計解析": [
             {"question": "仮説検定でp値が小さい場合の解釈は？", "options": ["帰無仮説を棄却", "帰無仮説を採択", "結果は不明"], "answer": "帰無仮説を棄却", "explanation": "p値が小さい場合、統計的に有意であると判断し、帰無仮説を棄却します。"}
         ]
-
+}
     
 if stage not in questions:
         st.warning("このステージの問題はまだ追加されていません。")
