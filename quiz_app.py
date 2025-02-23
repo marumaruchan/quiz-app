@@ -14,10 +14,18 @@ def main():
         "ステージ7: 統計解析"])
     
     questions = {
-        "ステージ1: Python基礎": [
-            {"question": "Pythonでリストを作成する正しい構文は？", "options": ["list = []", "list()", "{}"], "answer": "list = []", "explanation": "Pythonのリストは `list = []` で定義できます。"},
-            {"question": "条件分岐に使用するキーワードは？", "options": ["if", "for", "while"], "answer": "if", "explanation": "条件分岐には `if` を使用します。"}
-        ],
+    "ステージ1: Python基礎": [
+        {"question": "Pythonで変数を定義する正しい方法は？", "options": ["var x = 5", "x = 5", "let x = 5"], "answer": "x = 5", "explanation": "Pythonでは変数を宣言する際に型指定は不要です。"},
+        {"question": "リストの要素にアクセスする正しい方法は？", "options": ["list[1]", "list.get(1)", "list{1}"], "answer": "list[1]", "explanation": "Pythonではインデックスを角括弧[]で指定します。"},
+        {"question": "関数を定義する正しい方法は？", "options": ["def func():", "function func():", "func =>"], "answer": "def func():", "explanation": "Pythonではdefキーワードを使って関数を定義します。"},
+        {"question": "条件分岐で正しい記述は？", "options": ["if (x > 5) {}", "if x > 5:", "if x > 5 then"], "answer": "if x > 5:", "explanation": "Pythonでは条件分岐にコロン(:)を使用します。"},
+        {"question": "forループの正しい構文は？", "options": ["for (int i=0; i<5; i++)", "for i in range(5):", "foreach i in range(5)"], "answer": "for i in range(5):", "explanation": "Pythonではforループにrange()を使用します。"},
+        {"question": "リスト内包表記の正しい使い方は？", "options": ["[x*x for x in range(5)]", "{x*x | x in range(5)}", "(x*x for x in range(5))"], "answer": "[x*x for x in range(5)]", "explanation": "リスト内包表記は角括弧[]を使用します。"},
+        {"question": "辞書のキーにアクセスする方法は？", "options": ["dict[\"key\"]", "dict.key", "dict{key}"], "answer": "dict[\"key\"]", "explanation": "辞書のキーは角括弧[]でアクセスします。"},
+        {"question": "関数のデフォルト引数を設定する方法は？", "options": ["def func(x=10):", "def func(x: 10):", "func x = 10"], "answer": "def func(x=10):", "explanation": "Pythonではデフォルト引数を=で設定できます。"},
+        {"question": "Pythonでコメントを記述する方法は？", "options": ["// コメント", "# コメント", "<!-- コメント -->"], "answer": "# コメント", "explanation": "Pythonでは#を使ってコメントを記述します。"},
+        {"question": "タプルとリストの違いは？", "options": ["タプルは変更不可、リストは変更可", "どちらも変更可", "どちらも変更不可"], "answer": "タプルは変更不可、リストは変更可", "explanation": "タプルは変更不可（immutable）ですが、リストは変更可能です。"}
+    ],
         "ステージ2: データ操作": [
             {"question": "Pandasでデータの先頭を表示するメソッドは？", "options": ["head()", "tail()", "show()"], "answer": "head()", "explanation": "Pandasの `head()` メソッドはデータフレームの最初の数行を表示します。"},
             {"question": "特定の列を削除するPandasのメソッドは？", "options": ["drop()", "remove()", "delete()"], "answer": "drop()", "explanation": "`drop()` メソッドを使うと、指定した列や行を削除できます。"}
