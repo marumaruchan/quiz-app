@@ -43,16 +43,15 @@ def main():
         st.warning("このステージの問題はまだ追加されていません。")
         return
     
-    if "current_question" not in st.session_state:
+    if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
         st.session_state["current_question"] = 0
-    
-    if "answered" not in st.session_state:
         st.session_state["answered"] = False
-    
+        st.session_state["current_stage"] = stage
+
     question = questions[stage][st.session_state["current_question"]]
     
     st.write(f"### {question['question']}")
-    answer = st.radio("選択肢", question["options"], key=f"answer_radio_{stage}")
+    answer = st.radio("選択肢", question["options"], key="answer_radio")
     
     if st.button("回答する"):
         st.session_state["answered"] = True
@@ -62,9 +61,11 @@ def main():
             st.error("不正解 😢")
         st.write("解説: ", question["explanation"])
     
-    if st.session_state["answered"] and st.button("次の問題"):
-        st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
-        st.session_state["answered"] = False
-    
+    if st.session_state["answered"]:
+        if st.button("次の問題", key="next_question"):
+            st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
+            st.session_state["answered"] = False
+            st.rerun()  # 画面を更新
+
 if __name__ == "__main__":
     main()
