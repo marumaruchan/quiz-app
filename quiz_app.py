@@ -62,21 +62,85 @@ def main():
         {"question": "9.統計的に有意な結果を示すために一般的に使用されるp値の閾値は？", "options": ["0.05", "0.5", "0.01"], "answer": "0.05", "explanation": "p値が0.05未満の場合、統計的に有意とされることが多いです。"},
         {"question": "10.t検定とは何を比較するための手法？", "options": ["2つの平均", "データの分布", "カテゴリの関連性"], "answer": "2つの平均", "explanation": "t検定は2つのグループの平均値が統計的に異なるかを確認するための手法です。"}
     ],
-        "ステージ5: 機械学習基礎": [
-            {"question": "線形回帰を実装するライブラリは？", "options": ["sklearn", "tensorflow", "numpy"], "answer": "sklearn", "explanation": "`sklearn` を使うと線形回帰モデルを簡単に実装できます。"}
-        ],
-        "ステージ6: 応用問題チャレンジ！": [
-            {"question": "実際のデータを分析する際に重要な前処理は？", "options": ["欠損値処理", "データの削除", "データの無視"], "answer": "欠損値処理", "explanation": "データ分析では欠損値処理が重要なステップです。"}
-        ],
-        "ステージ7: 統計解析": [
-            {"question": "仮説検定でp値が小さい場合の解釈は？", "options": ["帰無仮説を棄却", "帰無仮説を採択", "結果は不明"], "answer": "帰無仮説を棄却", "explanation": "p値が小さい場合、統計的に有意であると判断し、帰無仮説を棄却します。"}
-        ]
+        "ステージ5: 機械学習基礎":[
+        {"question": "1.線形回帰モデルを提供するライブラリは？", "options": ["sklearn", "matplotlib", "numpy"], "answer": "sklearn", "explanation": "`scikit-learn` (sklearn) は機械学習用のライブラリです。"},
+        {"question": "2.教師あり学習に含まれる手法は？", "options": ["回帰", "クラスタリング", "次元削減"], "answer": "回帰", "explanation": "教師あり学習には回帰や分類があります。"},
+        {"question": "3.分類問題に使われる手法は？", "options": ["ロジスティック回帰", "k-means", "主成分分析"], "answer": "ロジスティック回帰", "explanation": "ロジスティック回帰は分類問題に用いられます。"},
+        {"question": "4.k近傍法（k-NN）はどのような手法？", "options": ["教師なし学習", "教師あり学習", "強化学習"], "answer": "教師あり学習", "explanation": "k-NNは教師あり学習の手法の一つです。"},
+        {"question": "5.ニューラルネットワークの基本的な単位は？", "options": ["ニューロン", "ノード", "エッジ"], "answer": "ニューロン", "explanation": "ニューラルネットワークは複数のニューロンで構成されています。"},
+        {"question": "6.サポートベクターマシン（SVM）の主な目的は？", "options": ["回帰分析", "データ分類", "特徴抽出"], "answer": "データ分類", "explanation": "SVMはデータを分類するための手法です。"},
+        {"question": "7.ディープラーニングのフレームワークは？", "options": ["TensorFlow", "Matplotlib", "Pandas"], "answer": "TensorFlow", "explanation": "TensorFlowはディープラーニング向けのフレームワークです。"},
+        {"question": "8.決定木の分岐条件を決める要素は？", "options": ["エントロピー", "重み", "学習率"], "answer": "エントロピー", "explanation": "エントロピーは決定木の分岐条件を決める指標です。"},
+        {"question": "9.機械学習モデルの過学習を防ぐ方法は？", "options": ["正則化", "データ拡張", "特徴抽出"], "answer": "正則化", "explanation": "正則化は過学習を防ぐための手法の一つです。"},
+        {"question": "10.勾配降下法の目的は？", "options": ["損失関数の最小化", "データの可視化", "特徴の選択"], "answer": "損失関数の最小化", "explanation": "勾配降下法は損失関数を最小化するための最適化手法です。"}
+    ],
+{
+  "ステージ6: 応用問題チャレンジ": [
+    {
+      "question": "1.次元削減に使用される手法は？",
+      "options": ["PCA", "回帰分析", "ロジスティック回帰"],
+      "answer": "PCA",
+      "explanation": "PCA（主成分分析）は次元削減のための手法です。"
+    },
+    {
+      "question": "2.欠損値処理の一般的な方法は？",
+      "options": ["削除", "平均値で補完", "どちらも可能"],
+      "answer": "どちらも可能",
+      "explanation": "dropna() で削除、fillna() で補完ができます。"
+    },
+    {
+      "question": "3.精度の高いモデルを作るために必要なことは？",
+      "options": ["特徴量エンジニアリング", "データの削減", "計算機の性能向上"],
+      "answer": "特徴量エンジニアリング",
+      "explanation": "適切な特徴量を作ることでモデルの精度が向上します。"
+    },
+    {
+      "question": "4.Pythonでニューラルネットワークを作成するライブラリは？",
+      "options": ["TensorFlow", "Matplotlib", "Pandas"],
+      "answer": "TensorFlow",
+      "explanation": "TensorFlow はディープラーニング用のライブラリです。"
+    },
+    {
+      "question": "5.異常検知に使われる手法は？",
+      "options": ["k近傍法", "ロジスティック回帰", "サポートベクターマシン"],
+      "answer": "サポートベクターマシン",
+      "explanation": "SVM は異常検知にも利用されます。"
+    },
+    {
+      "question": "6.モデルの過学習を検出する方法は？",
+      "options": ["訓練データの精度のみを見る", "テストデータの精度と比較する", "エポック数を増やす"],
+      "answer": "テストデータの精度と比較する",
+      "explanation": "訓練データとテストデータの精度差が大きいと過学習の可能性があります。"
+    },
+    {
+      "question": "7.強化学習で報酬を最大化するための手法は？",
+      "options": ["Q学習", "回帰分析", "クラスタリング"],
+      "answer": "Q学習",
+      "explanation": "Q学習 は強化学習の代表的なアルゴリズムです。"
+    },
+    {
+      "question": "8.ベイズ統計が用いられる場面は？",
+      "options": ["スパムメール分類", "物理シミュレーション", "データのソート"],
+      "answer": "スパムメール分類",
+      "explanation": "ナイーブベイズ はスパムフィルタなどで使われます。"
+    },
+    {
+      "question": "9.ハイパーパラメータのチューニング方法は？",
+      "options": ["グリッドサーチ", "ランダムサーチ", "どちらも正しい"],
+      "answer": "どちらも正しい",
+      "explanation": "GridSearchCV や RandomizedSearchCV を使用して調整します。"
+    },
+    {
+      "question": "10.予測モデルの評価をする際に使われるデータは？",
+      "options": ["テストデータ", "訓練データ", "ラベルなしデータ"],
+      "answer": "テストデータ",
+      "explanation": "テストデータは未知のデータに対するモデルの評価に使います。"
     }
+  ]
+}
+
     
-    if stage not in questions:
-        st.warning("このステージの問題はまだ追加されていません。")
-        return
-    
+
     if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
         st.session_state["current_question"] = 0
         st.session_state["answered"] = False
