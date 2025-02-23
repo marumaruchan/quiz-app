@@ -141,17 +141,17 @@ def main():
 }
     
 
-    if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
+if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
         st.session_state["current_question"] = 0
         st.session_state["answered"] = False
         st.session_state["current_stage"] = stage
 
-    question = questions[stage][st.session_state["current_question"]]
+question = questions[stage][st.session_state["current_question"]]
     
-    st.write(f"### {question['question']}")
-    answer = st.radio("選択肢", question["options"], key="answer_radio")
+st.write(f"### {question['question']}")
+answer = st.radio("選択肢", question["options"], key="answer_radio")
     
-    if st.button("回答する"):
+if st.button("回答する"):
         st.session_state["answered"] = True
         if answer == question["answer"]:
             st.success("正解！ 🎉")
@@ -159,7 +159,7 @@ def main():
             st.error("不正解 😢")
         st.write("解説: ", question["explanation"])
     
-    if st.session_state["answered"]:
+if st.session_state["answered"]:
         if st.button("次の問題", key="next_question"):
             st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
             st.session_state["answered"] = False
