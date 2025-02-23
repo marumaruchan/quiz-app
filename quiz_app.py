@@ -100,23 +100,29 @@ def main():
             {"question": "10.確率変数とは何か？", "options": ["数値が変化する変数", "確率を持つ変数", "特定の値を持つ変数"], "answer": "確率を持つ変数", "explanation": "確率変数は確率を持つ変数です。"}
         ]
     }
+if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
+        st.session_state["current_question"] = 0
+        st.session_state["answered"] = False
+        st.session_state["current_stage"] = stage
 
-
-def generate_quiz(data):
-    stages = data['stages']
-    quiz = []
+question = questions[stage][st.session_state["current_question"]]
     
-    for stage, questions in stages.items():
-        quiz.append(f"【{stage}】")
-        for q in questions:
-            question = q['question']
-            options = ' / '.join(q['options'])
-            answer = q['answer']
-            explanation = q['explanation']
-            quiz.append(f"{question} （選択肢: {options}） 正解: {answer} 理由: {explanation}")
+st.write(f"### {question['question']}")
+answer = st.radio("選択肢", question["options"], key="answer_radio")
+    
+if st.button("回答する"):
+        st.session_state["answered"] = True
+        if answer == question["answer"]:
+            st.success("正解！ 🎉")
+        else:
+            st.error("不正解 😢")
+        st.write("解説: ", question["explanation"])
+    
+if st.session_state["answered"]:
+        if st.button("次の問題", key="next_question"):
+            st.session_state["current_question"] = (st.session_state["current_question"] + 1) % len(questions[stage])
+            st.session_state["answered"] = False
+            st.rerun()  # 画面を更新
 
-    return "\n".join(quiz)
-
-quiz_output = generate_quiz(data)
-print(quiz_output)
-
+if __name__ == "__main__":
+    main()
