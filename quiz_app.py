@@ -47,9 +47,6 @@ questions = {
         ]
 }
     
-if stage not in questions:
-        st.warning("このステージの問題はまだ追加されていません。")
-        return
     
 if "current_question" not in st.session_state or "current_stage" not in st.session_state or st.session_state["current_stage"] != stage:
         st.session_state["current_question"] = 0
