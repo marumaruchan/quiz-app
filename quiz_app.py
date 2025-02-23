@@ -26,10 +26,18 @@ def main():
         {"question": "Pythonでコメントを記述する方法は？", "options": ["// コメント", "# コメント", "<!-- コメント -->"], "answer": "# コメント", "explanation": "Pythonでは#を使ってコメントを記述します。"},
         {"question": "タプルとリストの違いは？", "options": ["タプルは変更不可、リストは変更可", "どちらも変更可", "どちらも変更不可"], "answer": "タプルは変更不可、リストは変更可", "explanation": "タプルは変更不可（immutable）ですが、リストは変更可能です。"}
     ],
-        "ステージ2: データ操作": [
-            {"question": "Pandasでデータの先頭を表示するメソッドは？", "options": ["head()", "tail()", "show()"], "answer": "head()", "explanation": "Pandasの `head()` メソッドはデータフレームの最初の数行を表示します。"},
-            {"question": "特定の列を削除するPandasのメソッドは？", "options": ["drop()", "remove()", "delete()"], "answer": "drop()", "explanation": "`drop()` メソッドを使うと、指定した列や行を削除できます。"}
-        ],
+    "ステージ2: データ操作": [
+        {"question": "Pandasでデータフレームの最初の5行を表示するメソッドは？", "options": ["show()", "head()", "display()"], "answer": "head()", "explanation": "`head()` メソッドを使うと最初の5行が表示されます。"},
+        {"question": "データフレームの列を取得する方法は？", "options": ["df['列名']", "df.column(列名)", "df->列名"], "answer": "df['列名']", "explanation": "列を取得するには `df['列名']` を使います。"},
+        {"question": "欠損値を削除するメソッドは？", "options": ["dropna()", "fillna()", "replace()"], "answer": "dropna()", "explanation": "欠損値を削除するには `dropna()` を使います。"},
+        {"question": "データフレームの行数を取得するには？", "options": ["len(df)", "df.shape[0]", "df.rows"], "answer": "df.shape[0]", "explanation": "行数を取得するには `df.shape[0]` を使います。"},
+        {"question": "列の平均値を計算するには？", "options": ["df.mean()", "df.average()", "df.sum()/df.count()"], "answer": "df.mean()", "explanation": "`mean()` を使うと平均値を計算できます。"},
+        {"question": "データフレームのソートに使うメソッドは？", "options": ["sort_values()", "order_by()", "sort()"], "answer": "sort_values()", "explanation": "データフレームをソートするには `sort_values()` を使います。"},
+        {"question": "データフレームを結合するメソッドは？", "options": ["merge()", "concat()", "combine()"], "answer": "merge()", "explanation": "データを結合するには `merge()` を使います。"},
+        {"question": "データフレームの行をフィルタリングする方法は？", "options": ["df[df['列名'] > 10]", "df.filter('列名' > 10)", "df.where('列名' > 10)"], "answer": "df[df['列名'] > 10]", "explanation": "条件を指定してフィルタリングできます。"},
+        {"question": "データフレームをCSVファイルとして保存するには？", "options": ["df.to_csv()", "df.save_csv()", "df.write_csv()"], "answer": "df.to_csv()", "explanation": "`to_csv()` メソッドでCSVとして保存できます。"},
+        {"question": "データフレームのインデックスをリセットするメソッドは？", "options": ["reset_index()", "set_index()", "drop_index()"], "answer": "reset_index()", "explanation": "`reset_index()` を使うとインデックスをリセットできます。"}
+    ],
         "ステージ3: 可視化": [
             {"question": "Matplotlibでヒストグラムを描く関数は？", "options": ["hist()", "plot()", "bar()"], "answer": "hist()", "explanation": "ヒストグラムを描くには `hist()` を使用します。"}
         ],
